@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  iptracker:
+    build: .
+    container_name: iptracker-pro
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: production
+    volumes:
+      - ./data:/app/data
+      - ./templates:/app/templates
+      - ./static:/app/static
+    command: gunicorn --certfile=cert.pem --keyfile=key.pem --bind 0.0.0.0:5000 app:app
+    restart: unless-stopped
+    networks:
+      - iptracker-network
+
+networks:
+  iptracker-network:
+    driver: bridge
