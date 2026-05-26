@@ -147,3 +147,11 @@ Thumbs.db
 # Application
 phishing_tool/data/results/*
 phishing_tool/data/campaigns/*
+
+# Node
+node_modules/
+.next/
+out/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
